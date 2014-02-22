@@ -33,6 +33,12 @@ $ make
 The library is compiled as static library. The test and the utilities
 does not need any linking at runtime.
 
+To execute the test, type:
+
+```shell
+$ make test
+```
+
 ## License
 
 Copyright (c) 2014, Danilo Treffiletti <urban82@gmail.com>  
