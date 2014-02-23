@@ -39,7 +39,8 @@ int main(int argc, char **argv)
     srand(time(0));
 
     if (argc != 4) {
-        fputs("Missing argument\n", stderr);
+        fprintf(stderr, "Missing argument\n");
+        fprintf(stderr, "Usage: %s <key> <input file> <output file>\n", argv[0]);
         return 1;
     }
 
@@ -49,13 +50,13 @@ int main(int argc, char **argv)
 
     input = fopen(argv[2], "rb");
     if (input == 0) {
-        fputs("File read error", stderr);
+        fprintf(stderr, "Cannot read file '%s'\n", argv[2]);
         return 1;
     }
 
     output = fopen(argv[3], "wb");
     if (output == 0) {
-        fputs("File write error", stderr);
+        fprintf(stderr, "Cannot write file '%s'\n", argv[3]);
         return 1;
     }
 
