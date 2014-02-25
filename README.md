@@ -30,8 +30,8 @@ $ cmake ..
 $ make
 ```
 
-The library is compiled as static library. The test and the utilities
-does not need any linking at runtime.
+The library is compiled as shared library, so it can be linked in any
+project.
 
 To execute the test, type:
 

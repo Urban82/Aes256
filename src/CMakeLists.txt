@@ -1,1 +1,1 @@
-add_library(aes256 STATIC aes256.cpp)
+add_library(aes256 SHARED aes256.cpp)
