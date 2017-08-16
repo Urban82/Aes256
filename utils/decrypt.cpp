@@ -29,6 +29,10 @@
 
 #define BUFFER_SIZE 1024*1024
 
+#ifdef __APPLE__
+#  define fseeko64 fseeko
+#endif
+
 int main(int argc, char **argv)
 {
     ByteArray key, dec;
