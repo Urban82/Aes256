@@ -6,12 +6,12 @@ Author: Danilo Treffiletti <urban82@gmail.com>
 
 ## About
 
-Aes256 is a library written in C++ that offer AES 256 bit encryptation
-and decryptation.
+Aes256 is a library written in C++ that offer AES 256 bit encryption
+and decryption.
 
-It use a salt to extend the encryptation key to 256 bit. The encrypted
+It use a salt to extend the encryption key to 256 bit. The encrypted
 stream is aware of this salt and of the padding added to complete last
-encryptation block.
+encryption block.
 
 A test of functionalities (with test of the AES 256 test vectors) is
 included.
