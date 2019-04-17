@@ -11,6 +11,14 @@ set(compiler_common_flags "${compiler_common_flags} -D_LARGEFILE_SOURCE -D_LARGE
 set(CMAKE_C_FLAGS "${compiler_common_flags} -Wmissing-prototypes ${CMAKE_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "${compiler_common_flags} -Wnon-virtual-dtor -Woverloaded-virtual ${CMAKE_CXX_FLAGS}")
 
+IF (NOT LIB_SUFFIX)
+    IF (CMAKE_SIZEOF_VOID_P EQUAL 4)
+        SET(LIB_SUFFIX "")
+    ELSE (CMAKE_SIZEOF_VOID_P EQUAL 4)
+        SET(LIB_SUFFIX 64)
+    ENDIF (CMAKE_SIZEOF_VOID_P EQUAL 4)
+ENDIF (NOT LIB_SUFFIX)
+
 include_directories(src)
 
 add_subdirectory(src)
