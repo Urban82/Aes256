@@ -4,6 +4,10 @@ cmake_minimum_required(VERSION 2.6)
 
 enable_testing()
 
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+    set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build." FORCE)
+endif()
+
 IF (MSVC)
 ELSE (MSVC)
     set(compiler_common_flags "-ggdb -Wall -Wsign-compare -Wformat-security -Wpointer-arith")
@@ -12,8 +16,6 @@ ELSE (MSVC)
     set(CMAKE_C_FLAGS "${compiler_common_flags} -Wmissing-prototypes ${CMAKE_C_FLAGS}")
     set(CMAKE_CXX_FLAGS "${compiler_common_flags} -Wnon-virtual-dtor -Woverloaded-virtual ${CMAKE_CXX_FLAGS}")
 ENDIF (MSVC)
-
-
 
 
 IF (NOT LIB_SUFFIX)
