@@ -2,7 +2,7 @@ add_executable(test_aes256 test_aes256.cpp)
 add_dependencies(test_aes256 aes256)
 target_link_libraries(test_aes256 aes256)
 
-IF (AES256_SHARED_LIB AND MSVC)
+IF (MSVC)
     IF (NOT CMAKE_BUILD_TYPE)
         SET(LIB_BUILT_PATH ${CMAKE_BINARY_DIR}/src/Release)
     ELSE (NOT CMAKE_BUILD_TYPE)
@@ -13,9 +13,9 @@ IF (AES256_SHARED_LIB AND MSVC)
         COMMAND test_aes256
         WORKING_DIRECTORY ${LIB_BUILT_PATH}
     )
-ELSE (AES256_SHARED_LIB)
+ELSE (MSVC)
     add_test(
         NAME test_aes256 
         COMMAND test_aes256
     )
-ENDIF (AES256_SHARED_LIB)
+ENDIF (MSVC)
