@@ -29,8 +29,10 @@
 
 #define BUFFER_SIZE 1024*1024
 
-#ifdef __APPLE__
+#if defined(__APPLE__)
 #  define fseeko64 fseeko
+#elif defined(_MSC_VER)
+#  define fseeko64 _fseeki64
 #endif
 
 int main(int argc, char **argv)
