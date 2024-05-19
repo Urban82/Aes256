@@ -1,4 +1,11 @@
-add_library(aes256 SHARED aes256.cpp)
+option(AES256_SHARED_LIB "Build AES256 shared lib" ON)
+
+IF (AES256_SHARED_LIB)
+    add_library(aes256 SHARED aes256.cpp)
+ELSE (AES256_SHARED_LIB)
+    add_library(aes256 STATIC aes256.cpp)
+ENDIF (AES256_SHARED_LIB)
+
 SET_TARGET_PROPERTIES(
         aes256
     PROPERTIES
