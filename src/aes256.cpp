@@ -273,7 +273,7 @@ void Aes256::encrypt(unsigned char* buffer)
 
 ByteArray::size_type Aes256::decrypt_start(const ByteArray::size_type encrypted_length)
 {
-    register unsigned char j;
+    unsigned char j;
 
     m_remainingLength = encrypted_length;
 
@@ -319,7 +319,7 @@ ByteArray::size_type Aes256::decrypt_continue(const unsigned char* encrypted, co
 void Aes256::check_and_decrypt_buffer(ByteArray& plain)
 {
     if (!m_decryptInitialized && m_buffer_pos == m_salt.size() + 1) {
-        register unsigned char j;
+        unsigned char j;
         ByteArray::size_type padding;
 
         // Get salt
@@ -379,7 +379,7 @@ void Aes256::decrypt(unsigned char* buffer)
 
 void Aes256::expand_enc_key(unsigned char* rc)
 {
-    register unsigned char i;
+    unsigned char i;
 
     m_rkey[0] = m_rkey[0] ^ sbox[m_rkey[29]] ^ (*rc);
     m_rkey[1] = m_rkey[1] ^ sbox[m_rkey[30]];
@@ -438,7 +438,7 @@ void Aes256::expand_dec_key(unsigned char* rc)
 
 void Aes256::sub_bytes(unsigned char* buffer)
 {
-    register unsigned char i = KEY_SIZE / 2;
+    unsigned char i = KEY_SIZE / 2;
 
     while (i--)
         buffer[i] = sbox[buffer[i]];
@@ -446,7 +446,7 @@ void Aes256::sub_bytes(unsigned char* buffer)
 
 void Aes256::sub_bytes_inv(unsigned char* buffer)
 {
-    register unsigned char i = KEY_SIZE / 2;
+    unsigned char i = KEY_SIZE / 2;
 
     while (i--)
         buffer[i] = sboxinv[buffer[i]];
@@ -464,7 +464,7 @@ void Aes256::copy_key()
 
 void Aes256::add_round_key(unsigned char* buffer, const unsigned char round)
 {
-    register unsigned char i = KEY_SIZE / 2;
+    unsigned char i = KEY_SIZE / 2;
 
     while (i--)
         buffer[i] ^= m_rkey[ (round & 1) ? i + 16 : i ];
@@ -472,7 +472,7 @@ void Aes256::add_round_key(unsigned char* buffer, const unsigned char round)
 
 void Aes256::shift_rows(unsigned char* buffer)
 {
-    register unsigned char i, j, k, l; /* to make it potentially parallelable :) */
+    unsigned char i, j, k, l; /* to make it potentially parallelable :) */
 
     i          = buffer[1];
     buffer[1]  = buffer[5];
@@ -497,7 +497,7 @@ void Aes256::shift_rows(unsigned char* buffer)
 
 void Aes256::shift_rows_inv(unsigned char* buffer)
 {
-    register unsigned char i, j, k, l; /* same as above :) */
+    unsigned char i, j, k, l; /* same as above :) */
 
     i          = buffer[1];
     buffer[1]  = buffer[13];
@@ -522,7 +522,7 @@ void Aes256::shift_rows_inv(unsigned char* buffer)
 
 void Aes256::mix_columns(unsigned char* buffer)
 {
-    register unsigned char i, a, b, c, d, e;
+    unsigned char i, a, b, c, d, e;
 
     for (i = 0; i < 16; i += 4)
     {
@@ -542,7 +542,7 @@ void Aes256::mix_columns(unsigned char* buffer)
 
 void Aes256::mix_columns_inv(unsigned char* buffer)
 {
-    register unsigned char i, a, b, c, d, e, x, y, z;
+    unsigned char i, a, b, c, d, e, x, y, z;
 
     for (i = 0; i < 16; i += 4)
     {
